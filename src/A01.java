@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class A01 {
+public class A01{
 
     //    Variables locales
 //    Cambiar directorio para pruebas
