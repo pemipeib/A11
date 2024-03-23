@@ -131,15 +131,18 @@ public class A01 {
 
         Scanner pedirDatos = new Scanner(System.in);
 
-        if (opt == 1) {
-            System.out.println("Dime el nombre del fichero");
+        switch (opt){
+            case 1:
+                System.out.println("Dime el nombre del fichero");
+                break;
+            case 2:
+                System.out.println("Dime el nombre del directorio");
+                break;
+            case 3:
+                System.out.println("Dime el nombre de un fichero o un directorio");
+                break;
         }
-        if (opt == 2) {
-            System.out.println("Dime el nombre del directorio");
-        }
-        if (opt == 3) {
-            System.out.println("Dime el nombre de un fichero o un directorio");
-        }
+
         nombreFichero = pedirDatos.next();
 
         return nombreFichero;
