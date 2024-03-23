@@ -1,16 +1,3 @@
-package Actividad01;
-
-/*Crea los siguientes métodos respetando las cabeceras dadas:
-        ● void crearFichero(String directorio, String fichero): creará un fichero con el nombre
-        fichero1.txt
-        ● void verContenido(String directorio): visualizará el contenido del directorio pasado
-        como parámetro.
-        ● void verInf (String directorio, String fichero): visualizará el nombre, la ruta absoluta y
-        la relativa,si se puede escribir, si se puede leer, el tamaño,si es un directorio y si es
-        un fichero.
-        Los parámetros que necesitan los métodos serán pedidos al usuario desde el programa
-        principal.*/
-
 import java.io.File;
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -20,7 +7,7 @@ public class A01 {
 
     //    Variables locales
 //    Cambiar directorio para pruebas
-    static String dirTrabajo = "c:\\Grado superior\\PRG\\11\\";
+    static String dirTrabajo = "/home/pedro/programas/java/A11";
 
     public static void main(String[] args) {
 
@@ -30,7 +17,6 @@ public class A01 {
             opt = menu();
             opciones(opt);
         } while (opt != 5);
-
     }
 
     public static int menu() {
@@ -76,7 +62,7 @@ public class A01 {
         }
     }
 
-//    Crea un fichero con el nombre del parametro que se pasa
+    //    Crea un fichero con el nombre del parametro que se pasa
     public static void crearFichero(String nomFichero) {
 
 //        Crea el objeto File
@@ -94,11 +80,11 @@ public class A01 {
 
     }
 
-//    Muestra el contenido de un directorio
+    //    Muestra el contenido de un directorio
     public static void verContenidoDir(String nombreDir) {
         File file2 = new File(nombreDir);
 
-        if (file2.exists()){
+        if (file2.exists()) {
 //        Lee el contenido de un directorio y lo guarda como un array
             String[] contenido = file2.list();
 
@@ -107,11 +93,9 @@ public class A01 {
             } else {
                 for (String cont : contenido) System.out.println(cont);
             }
-        }else{
+        } else {
             System.out.println(nombreDir + " no existe");
         }
-
-
 
     }
 
@@ -139,10 +123,9 @@ public class A01 {
             System.out.println("El nombre introducido no existe");
         }
 
-
     }
 
-//    Pide el nombre según el paramatro pasado y devuelbe el string introducido
+    //    Pide el nombre según el paramatro pasado y devuelve el string introducido
     public static String nombre(int opt) {
         String nombreFichero = "";
 
