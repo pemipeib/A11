@@ -11,7 +11,9 @@ public class A03 {
     static String dirTrabajo = "/home/pedro/programas/java/A11";
 
     public static void main(String[] args) {
+
         crearLeerFichero("Fichero3.txt");
+
     }
 
     public static void crearLeerFichero(String nombre){

@@ -111,6 +111,8 @@ public class A01{
                 System.out.println(file3.getName() + " es un fichero");
                 System.out.println("La ruta absoluta de " + file3.getName() + " es " + file3.getAbsolutePath());
                 System.out.println("La ruta relativa de " + file3.getName() + " es " + file3.getPath());
+
+//                Prueba de ternario
                 String escribe = file3.canWrite() ? "Se puede escribir" : "No se puede escribir";
                 System.out.println(escribe);
                 String leer = file3.canRead() ? "Se puede leer" : "No se puede leer";
