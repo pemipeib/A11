@@ -20,15 +20,13 @@ public class A02 {
 
     public static void crearLeerFichero(String nombre, int opt){
         //        Crea el objeto File
-        File file1 = new File(dirTrabajo, nombre);
-
-        String leido= "";
+        File file = new File(dirTrabajo, nombre);
 
         try {
-            if (file1.createNewFile()) {
+            if (file.createNewFile()) {
                 //        Poner el texto en el fichero
                 try{
-                    FileWriter texto= new FileWriter(file1);
+                    FileWriter texto= new FileWriter(file);
                     BufferedWriter bufferTexto= new BufferedWriter(texto);
                     bufferTexto.write(textoFichero(opt));
                     bufferTexto.close();
@@ -42,16 +40,22 @@ public class A02 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+//        Borrar fichero para pruebas
+//        file.delete();
 
 //        Leer contenido del fichero
-//        todo Decir si el fichero está vacio
-        try {
-            FileReader leer= new FileReader(file1);
-            BufferedReader bufferLeer= new BufferedReader(leer);
-            leido= bufferLeer.readLine();
-            System.out.println("El contenido de " + nombre + " es " + leido);
-        }catch (IOException e){
-            e.printStackTrace();
+        if (file.exists()) {
+            try {
+                FileReader leer= new FileReader(file);
+                BufferedReader bufferLeer= new BufferedReader(leer);
+                String leido= bufferLeer.readLine();
+                System.out.println("El contenido de " + nombre + " es " + leido);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else {
+            System.out.println("El fichero "+ nombre +" no existe");
         }
     }
 
