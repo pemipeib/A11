@@ -93,7 +93,11 @@ public class A04 {
             System.out.println("El fichero "+ file.getName() +" no existe");
         }
 
-        do {//todo no funciona el equals
+        do {
+
+            for (String alumno : alumnos){
+                System.out.println(alumno);
+            }
 
             try {
                 System.out.println("Dime el nombre del alumno a eliminar");
@@ -103,28 +107,19 @@ public class A04 {
                 pedirDatos.nextLine();
             }
 
+//          todo no funciona el equals
             for (String alumno : alumnos){
-
-                boolean com= alumno.equals(alu);
-                System.out.println(com);
-                if (alu.equalsIgnoreCase(alumno)){
-                    System.out.println(alumno);
+                System.out.println(alumno);
+                if (alu.equals(alumno)){
+                    System.out.println(alu);
                     alumnos.remove(alumnos);
                     file.delete();
                     salir= false;
+                }else {
+                    System.out.println("El nomnre del alumno no existe");
+                    break;
                 }
-
             }
-
-//            for (int i = 0; i < alumnos.size(); i++) {
-//
-//                if (alumnos.get(i).equals(alu)){
-//                    System.out.println(alumnos.get(i));
-//                    alumnos.remove(alumnos.get(i));
-//                    file.delete();
-//                    salir= false;
-//                }
-//            }
 
         }while (salir == true);
 
