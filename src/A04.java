@@ -13,10 +13,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class A04 {
+//    Poner el directorio a usar
+//    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\";
+    static String directorio= "/home/pedro/programas/java/A11";
 
-//    static File file = new File("/home/pedro/programas/java/A11", "Fichero4.txt");
-    static File file = new File("c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\", "Fichero4.txt");
-    static File file1 = new File("c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\", "Fichero4b.txt");
+    static File file = new File(directorio, "Fichero4.txt");
     public static void main(String[] args) {
         insertarAlumnos();
         elminaralumno();
@@ -25,15 +26,15 @@ public class A04 {
     public static void insertarAlumnos(){
 
         String[] alumnos= {
-                "alumno1",
-                "alumno2",
-                "alumno3",
-                "alumno4",
-                "alumno5",
-                "alumno6",
-                "alumno7",
-                "alumno8",
-                "alumno9",
+                "alumno 1",
+                "alumno 2",
+                "alumno 3",
+                "alumno 4",
+                "alumno 5",
+                "alumno 6",
+                "alumno 7",
+                "alumno 8",
+                "alumno 9"
         };
 
         try {
@@ -63,9 +64,9 @@ public class A04 {
 
         Scanner pedirDatos= new Scanner(System.in);
 
-        boolean salir= true;
+        boolean salir= false;
 
-        String alu= "";
+        String alu= "", leido;;
 
         //        Leer contenido del fichero
         if (file.exists()) {
@@ -73,22 +74,18 @@ public class A04 {
                 FileReader leer= new FileReader(file);
                 BufferedReader bufferLeer= new BufferedReader(leer);
 
-                String leido;
-
-//                System.out.println("El listado de alumnos es:");
-
 //                lee las líneas una a una hasta que devuelve null
                 while ((leido = bufferLeer.readLine()) != null) {
-//                    System.out.println(leido);
                     alumnos.add(leido);
                 }
             }catch (IOException e){
                 e.printStackTrace();
             }
         }else {
-            System.out.println("El fichero "+ file.getName() +" no existe");
+            System.out.println("El fichero " + file.getName() + " no existe");
         }
 
+//        Pedir el nombre del alumno
         do {
 
             try {
@@ -96,26 +93,32 @@ public class A04 {
                 for (String alumno : alumnos){
                     System.out.println(alumno);
                 }
-                alu= pedirDatos.next();
+                alu= pedirDatos.nextLine();
             }catch (InputMismatchException e){
                 System.out.println("Solo números");
                 pedirDatos.nextLine();
             }
 
+//            Recorre el arayList y elimina alumno
             for (int i = 0; i < alumnos.size(); i++) {
-                boolean cadena= alu.equals(alumnos.get(i));
-                if (cadena == true){
+                if (alu.equalsIgnoreCase(alumnos.get(i))){
                     alumnos.remove(alumnos.get(i));
-                    salir= false;
+                    System.out.println("El alumno " + alu + " ha sido eliminado del fichero");
+                    salir= true;
+//                    Borra fichero4.txt
+                    if (file.exists()){
+                        file.delete();
+                    }
                 }
             }
-        }while (salir == true);
+        }while (!salir);
 
+//        Crea otra vez y añado el contenido del arrayList a fichero4.txt
         try {
-            if (file1.createNewFile()) {
-                //        Poner el texto en el fichero
+            if (file.createNewFile()) {
+//          Poner el texto en el fichero
                 try{
-                    FileWriter texto= new FileWriter(file1);
+                    FileWriter texto= new FileWriter(file);
                     BufferedWriter bufferTexto= new BufferedWriter(texto);
                     for (String alumno : alumnos){
                         bufferTexto.write(alumno);
@@ -126,7 +129,7 @@ public class A04 {
                     e.printStackTrace();
                 }
             } else {
-                System.out.println("Fichero4b.txt no creado o ya existe");
+                System.out.println("Fichero4.txt no creado o ya existe");
             }
         } catch (IOException e) {
             e.printStackTrace();
