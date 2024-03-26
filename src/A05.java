@@ -10,7 +10,8 @@ import java.io.*;
 
 public class A05 {
     //    Poner el directorio a usar
-    static String directorio = "/home/pedro/Documentos/";
+//    static String directorio = "/home/pedro/Documentos/";
+    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
     static File file1 = new File(directorio, "Fichero05a.txt");
     static File file2 = new File(directorio, "Fichero05b.txt");

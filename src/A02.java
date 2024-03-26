@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*
@@ -10,52 +9,65 @@ ficheros los puedes crear en el directorio que desees.
  */
 public class A02 {
 
-    static String dirTrabajo = "/home/pedro/programas/java/A11";
+    static String dirTrabajo = ".\\src\\";
 
     public static void main(String[] args) {
 
+        iniciarPrograma();
+    }
+
+    public static void iniciarPrograma() {
         crearLeerFichero("Fichero1.txt", 1);
         crearLeerFichero("Fichero2.txt", 2);
     }
 
-    public static void crearLeerFichero(String nombre, int opt){
+    public static void crearLeerFichero(String nombre, int opt) {
         //        Crea el objeto File
         File file = new File(dirTrabajo, nombre);
 
         try {
             if (file.createNewFile()) {
                 //        Poner el texto en el fichero
-                try{
-                    FileWriter texto= new FileWriter(file);
-                    BufferedWriter bufferTexto= new BufferedWriter(texto);
+                try {
+
+                    FileWriter texto = new FileWriter(file);
+                    BufferedWriter bufferTexto = new BufferedWriter(texto);
                     bufferTexto.write(textoFichero(opt));
                     bufferTexto.close();
-                }catch (IOException e){
+
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
+
                 System.out.println(nombre + " creado");
+
             } else {
-                System.out.println(nombre + " no creado o ya existe");
+                file.delete();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-//        Borrar fichero para pruebas
-//        file.delete();
 
 //        Leer contenido del fichero
         if (file.exists()) {
             try {
-                FileReader leer= new FileReader(file);
-                BufferedReader bufferLeer= new BufferedReader(leer);
-                String leido= bufferLeer.readLine();
+
+                FileReader leer = new FileReader(file);
+                BufferedReader bufferLeer = new BufferedReader(leer);
+                String leido = bufferLeer.readLine();
                 System.out.println("El contenido de " + nombre + " es " + leido);
-            }catch (IOException e){
+
+            } catch (IOException e) {
+
                 e.printStackTrace();
+
             }
-        }else {
-            System.out.println("El fichero "+ nombre +" no existe");
+        } else {
+
+            file.delete();
+//            todo arreglar el duplicado
+            iniciarPrograma();
+
         }
     }
 
@@ -64,7 +76,7 @@ public class A02 {
 
         Scanner pedirDatos = new Scanner(System.in);
 
-        switch (opt){
+        switch (opt) {
             case 1:
                 System.out.println("Dime tu nombre completo");
                 break;

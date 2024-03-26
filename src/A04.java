@@ -12,9 +12,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class A04 {
-    //    Poner el directorio a usar
-//    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\";
-    static String directorio = "/home/pedro/programas/java/A11/";
+//    Poner el directorio a usar
+    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
+//    static String directorio = "/home/pedro/programas/java/A11/src";
 
     static File file = new File(directorio, "Fichero4.txt");
 

@@ -7,7 +7,7 @@ public class A01{
 
     //    Variables locales
 //    Cambiar directorio para pruebas
-    static String dirTrabajo = "/home/pedro/programas/java/A11";
+    static String dirTrabajo = ".\\src\\";
 
     public static void main(String[] args) {
 

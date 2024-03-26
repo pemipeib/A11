@@ -72,7 +72,7 @@ public class A06 {
 
                 for (int j = 0; j < linea2.size(); j++) {
 
-                        bufferTexto.write(linea1.get(i) + " --> " + linea2.get(j));
+                    bufferTexto.write(linea1.get(i) + " --> " + linea2.get(j));
                     bufferTexto.newLine();
                 }
                 bufferTexto.write("--------------------------------");

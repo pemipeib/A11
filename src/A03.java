@@ -1,14 +1,16 @@
 import java.io.*;
 import java.util.Scanner;
 
-/* Haz un programa que lea el contenido de un fichero llamado fichero3.txt donde hayan varias
+/*
+Haz un programa que lea el contenido de un fichero llamado fichero3.txt donde hayan varias
 líneas de texto (por ejemplo tu nombre en una línea, el mail en otra, el teléfono en otra …) y
 muestra por pantalla su contenido.
 Utiliza la clase BufferedReader.
  */
 public class A03 {
-
-    static String dirTrabajo = "/home/pedro/programas/java/A11";
+    //    Poner el directorio a usar
+    //    static String directorio = "/home/pedro/Documentos/";
+    static String directorio = ".\\src\\";
 
     public static void main(String[] args) {
 
@@ -18,7 +20,7 @@ public class A03 {
 
     public static void crearLeerFichero(String nombre){
         //        Crea el objeto File
-        File file = new File(dirTrabajo, nombre);
+        File file = new File(directorio, nombre);
 
         String textoFichero=
                 "Nombre -> Pedro Miguel Pérez Ibáñez\n" +
@@ -27,7 +29,7 @@ public class A03 {
 
         try {
             if (file.createNewFile()) {
-                //        Poner el texto en el fichero
+//        Poner el texto en el fichero
                 try{
                     FileWriter texto= new FileWriter(file);
                     BufferedWriter bufferTexto= new BufferedWriter(texto);
