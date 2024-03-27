@@ -1,26 +1,17 @@
-/*
-A partir de dos ficheros de texto se creará un tercer fichero cuyo contenido se obtendrá
-uniendo la información de los dos ficheros iniciales. Cada línea del fichero creado estará
-formada por la unión de la misma línea de los dos ficheros leídos. Puedes escoger entre
-solicitar al usuario el nombre de los ficheros y la tira de separación entre las dos líneas, que
-también se deberá insertar, o directamente ponerlo en el programa.
-*/
-
 import java.io.*;
 
 public class A05 {
-    //    Poner el directorio a usar
-//    static String directorio = "/home/pedro/Documentos/";
-    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
+    //    Poner el directorioUso a usar
+    static String directorioUso = "/home/pedro/Documentos/A11/src";
+//    static String directorioUso= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
-    static File file1 = new File(directorio, "Fichero05a.txt");
-    static File file2 = new File(directorio, "Fichero05b.txt");
-    static File file3 = new File(directorio, "Ficherounion.txt");
+    static File file1 = new File(directorioUso, "Fichero05a.txt");
+    static File file2 = new File(directorioUso, "Fichero05b.txt");
+    static File file3 = new File(directorioUso, "FicherounionA05.txt");
 
     public static void main(String[] args) {
         unirFichero();
     }
-
 
     public static void unirFichero() {
 
@@ -47,10 +38,14 @@ public class A05 {
                 bufferTexto.newLine();
                 bufferTexto.write("--------------------------------");
                 bufferTexto.newLine();
-
             }
 
             bufferTexto.close();
+
+            if (file3.exists()) {
+                System.out.println("Fichero FicherounionA05.txt creado.\n" +
+                        "Comparar con ficheros Fichero05a.txt y Ficheros05b");
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,22 +1,14 @@
-/* Haz un programa con dos métodos que llamarás desde el principal:
-● Un método (insertaralumnos) para insertar los elementos de un array en un fichero
-(fichero4.txt). Será un array con el nombre de los alumnos de la clase. Se debe
-insertar cada nombre dentro del fichero en una línea diferente. se debe utilizar la
-clase BufferedWriter.
-● Otro método (elminaralumno) que pida al usuario el nombre del alumno que se
-quiere borrar del fichero y lo elimine. */
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class A04 {
-//    Poner el directorio a usar
-    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
-//    static String directorio = "/home/pedro/programas/java/A11/src";
+    //    Poner el directorioUso a usar
+    static String directorioUso = "/home/pedro/Documentos/A11/src";
+//    static String directorioUso = "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
-    static File file = new File(directorio, "Fichero4.txt");
+    static File file = new File(directorioUso, "Fichero4.txt");
 
     public static void main(String[] args) {
         insertarAlumnos();
@@ -125,6 +117,10 @@ public class A04 {
                         bufferTexto.newLine();
                     }
                     bufferTexto.close();
+
+                    if (file.exists()) {
+                        System.out.println("Fichero Fichero4.txt creado");
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

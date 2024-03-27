@@ -1,15 +1,11 @@
 import java.io.*;
 import java.util.Scanner;
 
-/*
-Haz un programa para leer el contenido de un fichero llamado fichero1.txt donde haya
-contenido (por ejemplo, tu nombre y apellidos).
-Después inserta una cadena de texto dentro de otro fichero llamado fichero2.txt. Los
-ficheros los puedes crear en el directorio que desees.
- */
 public class A02 {
 
-    static String dirTrabajo = ".\\src\\";
+    //    Poner el directorioUso a usar
+    static String directorioUso = "/home/pedro/Documentos/A11/src";
+//    static String directorioUso = "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
     public static void main(String[] args) {
 
@@ -23,7 +19,7 @@ public class A02 {
 
     public static void crearLeerFichero(String nombre, int opt) {
         //        Crea el objeto File
-        File file = new File(dirTrabajo, nombre);
+        File file = new File(directorioUso, nombre);
 
         try {
             if (file.createNewFile()) {
@@ -87,9 +83,6 @@ public class A02 {
 
         textoFichero = pedirDatos.next();
 
-//        pedirDatos.close(); Da error
-
         return textoFichero;
-
     }
 }

@@ -1,21 +1,15 @@
-/*
-A partir de dos ficheros de texto se creará un tercer fichero cuyo contenido se obtendrá de
-las combinaciones de cada línea del primer fichero y todas las líneas del segundo fichero.
-Puedes escoger entre solicitar al usuario el nombre de los ficheros y la tira de separación
-entre las dos líneas, que también se deberá de insertar, o directamente ponerlo en el
-código.
-*/
-
 import java.io.*;
 import java.util.ArrayList;
 
 public class A06 {
-//    static String directorio = "/home/pedro/Documentos/";
-    static String directorio= "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
+    //    Poner el directorioUso a usar
+    static String directorioUso = "/home/pedro/Documentos/A11/src";
+//    static String directorioUso = "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
-    static File file1 = new File(directorio, "Fichero06a.txt");
-    static File file2 = new File(directorio, "Fichero06b.txt");
-    static File file3 = new File(directorio, "Ficherounion.txt");
+    static File file1 = new File(directorioUso, "Fichero06a.txt");
+    static File file2 = new File(directorioUso, "Fichero06b.txt");
+    static File file3 = new File(directorioUso, "FicherounionA06.txt");
+
     public static void main(String[] args) {
 
         unirFichero();
@@ -23,11 +17,11 @@ public class A06 {
 
     public static void unirFichero() {
 
-        ArrayList<String> linea1= new ArrayList<>();
-        ArrayList<String> linea2= new ArrayList<>();
+        ArrayList<String> linea1 = new ArrayList<>();
+        ArrayList<String> linea2 = new ArrayList<>();
 
-        String leido1= null;
-        String leido2= null;
+        String leido1 = null;
+        String leido2 = null;
 
         if (file3.exists()) {
             file3.delete();
@@ -70,16 +64,23 @@ public class A06 {
 
             for (int i = 0; i < linea1.size(); i++) {
 
+                bufferTexto.write(linea1.get(i));
+
                 for (int j = 0; j < linea2.size(); j++) {
 
-                    bufferTexto.write(linea1.get(i) + " --> " + linea2.get(j));
-                    bufferTexto.newLine();
+                    bufferTexto.write(" --> " + linea2.get(j));
                 }
+                bufferTexto.newLine();
                 bufferTexto.write("--------------------------------");
                 bufferTexto.newLine();
             }
 
             bufferTexto.close();
+
+            if (file3.exists()) {
+                System.out.println("Fichero FicherounionA06.txt creado.\n" +
+                        "Comparar con ficheros Fichero06a.txt y Ficheros06b");
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

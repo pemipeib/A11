@@ -1,41 +1,42 @@
 import java.io.*;
-import java.util.Scanner;
 
-/*
-Haz un programa que lea el contenido de un fichero llamado fichero3.txt donde hayan varias
-líneas de texto (por ejemplo tu nombre en una línea, el mail en otra, el teléfono en otra …) y
-muestra por pantalla su contenido.
-Utiliza la clase BufferedReader.
- */
 public class A03 {
-    //    Poner el directorio a usar
-    //    static String directorio = "/home/pedro/Documentos/";
-    static String directorio = ".\\src\\";
+    //    Poner el directorioUso a usar
+    static String directorioUso = "/home/pedro/Documentos/A11/src";
+//    static String directorioUso = "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
     public static void main(String[] args) {
-
         crearLeerFichero("Fichero3.txt");
-
     }
 
-    public static void crearLeerFichero(String nombre){
+    public static void crearLeerFichero(String nombre) {
         //        Crea el objeto File
-        File file = new File(directorio, nombre);
+        File file = new File(directorioUso, nombre);
 
-        String textoFichero=
+        String textoFichero =
                 "Nombre -> Pedro Miguel Pérez Ibáñez\n" +
-                "Email -> pedroperez@peperez.es\n" +
-                "Teléfono -> 123456789";
+                        "Email -> pedroperez@peperez.es\n" +
+                        "Teléfono -> 123456789";
 
         try {
+
+            if (file.exists()) {
+                file.delete();
+            }
+
             if (file.createNewFile()) {
 //        Poner el texto en el fichero
-                try{
-                    FileWriter texto= new FileWriter(file);
-                    BufferedWriter bufferTexto= new BufferedWriter(texto);
+                try {
+                    FileWriter texto = new FileWriter(file);
+                    BufferedWriter bufferTexto = new BufferedWriter(texto);
                     bufferTexto.write(textoFichero);
                     bufferTexto.close();
-                }catch (IOException e){
+
+                    if (file.exists()) {
+                        System.out.println("Fichero Fichero3.txt creado");
+                    }
+
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 System.out.println(nombre + " creado");
@@ -46,14 +47,11 @@ public class A03 {
             e.printStackTrace();
         }
 
-//        Borrar fichero para pruebas
-//        file.delete();
-
 //        Leer contenido del fichero
         if (file.exists()) {
             try {
-                FileReader leer= new FileReader(file);
-                BufferedReader bufferLeer= new BufferedReader(leer);
+                FileReader leer = new FileReader(file);
+                BufferedReader bufferLeer = new BufferedReader(leer);
 
                 String leido;
 
@@ -61,13 +59,11 @@ public class A03 {
                 while ((leido = bufferLeer.readLine()) != null) {
                     System.out.println(leido);
                 }
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
-            System.out.println("El fichero "+ nombre +" no existe");
+        } else {
+            System.out.println("El fichero " + nombre + " no existe");
         }
-
     }
-
 }

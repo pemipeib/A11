@@ -3,11 +3,12 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class A01{
+public class A01 {
 
     //    Variables locales
-//    Cambiar directorio para pruebas
-    static String dirTrabajo = ".\\src\\";
+    //    Poner el directorioUso a usar
+    static String directorioUso = "/home/pedro/Documentos/A11/src";
+//    static String directorioUso = "c:\\Grado superior\\PRG\\11\\para enviar\\Unidad11\\src\\";
 
     public static void main(String[] args) {
 
@@ -27,7 +28,7 @@ public class A01{
         String menu = "Seleciona una opción\n" +
                 "1. Crear fichero1.txt\n" +
                 "2. Dame un nombre de fichero a crear\n" +
-                "3. Ver contenido del directorio\n" +
+                "3. Ver contenido del directorioUso\n" +
                 "4. Nombre, ruta absoluta y relativa y otros parámetros de fichero1.txt\n" +
                 "5. salir";
 
@@ -66,7 +67,7 @@ public class A01{
     public static void crearFichero(String nomFichero) {
 
 //        Crea el objeto File
-        File file1 = new File(dirTrabajo, nomFichero);
+        File file1 = new File(directorioUso, nomFichero);
 
         try {
             if (file1.createNewFile()) {
@@ -80,23 +81,22 @@ public class A01{
 
     }
 
-    //    Muestra el contenido de un directorio
+    //    Muestra el contenido de un directorioUso
     public static void verContenidoDir(String nombreDir) {
         File file2 = new File(nombreDir);
 
         if (file2.exists()) {
-//        Lee el contenido de un directorio y lo guarda como un array
+//        Lee el contenido de un directorioUso y lo guarda como un array
             String[] contenido = file2.list();
 
             if (contenido == null || contenido.length == 0) {
-                System.out.println("El directorio está vacio o no existe");
+                System.out.println("El directorioUso está vacio o no existe");
             } else {
                 for (String cont : contenido) System.out.println(cont);
             }
         } else {
             System.out.println(nombreDir + " no existe");
         }
-
     }
 
     public static void verInf(String nombre) {
@@ -104,9 +104,9 @@ public class A01{
 
 //        Comrueba si existe el nombre pedido
         if (file3.exists()) {
-//            Comprueba si es un directorio o un fichero
+//            Comprueba si es un directorioUso o un fichero
             if (file3.isDirectory()) {
-                System.out.println(file3.getName() + " Es un directorio");
+                System.out.println(file3.getName() + " Es un directorioUso");
             } else {
                 System.out.println(file3.getName() + " es un fichero");
                 System.out.println("La ruta absoluta de " + file3.getName() + " es " + file3.getAbsolutePath());
@@ -133,15 +133,15 @@ public class A01{
 
         Scanner pedirDatos = new Scanner(System.in);
 
-        switch (opt){
+        switch (opt) {
             case 1:
                 System.out.println("Dime el nombre del fichero");
                 break;
             case 2:
-                System.out.println("Dime el nombre del directorio");
+                System.out.println("Dime el nombre del directorioUso");
                 break;
             case 3:
-                System.out.println("Dime el nombre de un fichero o un directorio");
+                System.out.println("Dime el nombre de un fichero o un directorioUso");
                 break;
         }
 
